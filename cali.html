@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        td:not(#result_id)
+        {
+            cursor: pointer;
+        }
+        td{
+            border-radius: 10px;
+            color: black;
+            background-color: rgb(0,139,139);
+            text-align: center;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="15px solid black"  cellpadding="40px" cellspacing="5px" height="500px" width="700px"  >
+        <tr>
+            <td colspan="4" id="result_id" style="text-align: right;"></td>
+        </tr>
+        
+        <tr>
+            <td onclick="getnum('9')">9</td>
+            <td onclick="getnum('8')">8</td>
+            <td onclick="getnum('7')">7</td>
+            <td onclick="getnum('/')">/</td>
+        </tr>
+        <tr>
+            <td onclick="getnum('6')">6</td>
+            <td onclick="getnum('5')">5</td>
+            <td onclick="getnum('4')">4</td>
+            <td onclick="getnum('*')">*</td>
+        </tr>
+        <tr>
+            <td onclick="getnum('3')">3</td>
+            <td onclick="getnum('2')">2</td>
+            <td onclick="getnum('1')">1</td>
+            <td onclick="getnum('-')">-</td>
+        </tr>
+        <tr>
+            <td onclick="getnum('0')">0</td>
+            <td onclick="getnum('00')">00</td>
+            <td onclick="getnum('.')">.</td>
+            <td onclick="getnum('+')">+</td>
+        </tr>
+        <tr>
+            <td onclick="clearall()">C</td>
+            <td onclick="backspace()"><<</td>
+            <td onclick="getnum('%')">%</td>
+            <td style="border-radius:100px; height:30px;width:30px;  display:block; position:relative;left:60px; " onclick="getnum('=')">=</td>
+        </tr>
+    </table>
+    <script>
+        var res="";
+        function getnum(val)
+        {
+            if(val=='=')
+            {
+                document.getElementById("result_id").innerHTML=eval(res);
+                res=eval(res)
+            }
+            else{
+                res=res+val;
+                document.getElementById("result_id").innerHTML=res;
+            }
+        }
+        function backspace(){
+            res=res.slice(0, -1);
+            document.getElementById("result_id").innerHTML=res;
+        }
+        function clearall(){
+            res=""
+            document.getElementById("result_id").innerHTML=res;
+        }
+    </script>
+</body>
+</html>
